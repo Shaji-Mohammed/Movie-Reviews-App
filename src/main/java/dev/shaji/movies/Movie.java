@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collation = "movies")
+@Document(collection = "movies")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,5 +23,6 @@ public class Movie {
     private String poster;
     private List<String> genres;
     private List<String> backdrops;
+    private List<Review> reviewIds;
 
 }
