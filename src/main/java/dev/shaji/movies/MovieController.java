@@ -16,16 +16,16 @@ import java.util.Optional;
 public class MovieController {
 
     @Autowired
-    private MovieService movieService;
+    private MovieService service;
 
     @GetMapping
     public ResponseEntity<List<Movie>> getAllMovies() {
-        return new ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
+        return new ResponseEntity<List<Movie>>(service.allMovies(), HttpStatus.OK);
     }
 
     @GetMapping("/{imdbId}")
     public ResponseEntity<Optional<Movie>> getSingleMovie(@PathVariable String imdbId) {
-        return new ResponseEntity<Optional<Movie>>(movieService.findMovieByImdbId(imdbId), HttpStatus.OK);
+        return new ResponseEntity<Optional<Movie>>(service.findMovieByImdbId(imdbId), HttpStatus.OK);
 
     }
 }
