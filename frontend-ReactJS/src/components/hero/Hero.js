@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 
 const Hero = ({ movies }) => {
   const navigate = useNavigate();
+
   function reviews(movieId) {
     navigate(`/Reviews/${movieId}`);
   }
@@ -17,7 +18,7 @@ const Hero = ({ movies }) => {
       <Carousel>
         {movies?.map((movie) => {
           return (
-            <Paper>
+            <Paper key={movie.imdbId}>
               <div className="movie-card-container">
                 <div
                   className="movie-card"
@@ -30,7 +31,7 @@ const Hero = ({ movies }) => {
                     <div className="movie-title">
                       <h4>{movie.title}</h4>
                     </div>
-                    <div className="movie-button-container">
+                    <div className="movie-buttons-container">
                       <Link
                         to={`/Trailer/${movie.trailerLink.substring(
                           movie.trailerLink.length - 11
@@ -43,6 +44,7 @@ const Hero = ({ movies }) => {
                           />
                         </div>
                       </Link>
+
                       <div className="movie-review-button-container">
                         <Button
                           variant="info"

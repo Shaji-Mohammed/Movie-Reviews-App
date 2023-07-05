@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import ReviewForm from "../reviewForm/ReviewForm";
 
-import React from "react";
-
 const Reviews = ({ getMovieData, movie, reviews, setReviews }) => {
   const revText = useRef();
   let params = useParams();
@@ -26,12 +24,17 @@ const Reviews = ({ getMovieData, movie, reviews, setReviews }) => {
         imdbId: movieId,
       });
 
-      const updateReviews = [...reviews, { body: rev.value }];
+      // const updatedReviews = [...reviews, { body: rev.value }];
+      const updatedReviews =
+        reviews != null
+          ? [...reviews, { body: rev.value }]
+          : [{ body: rev.value }];
 
       rev.value = "";
-      setReviews(updateReviews);
+
+      setReviews(updatedReviews);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -54,7 +57,7 @@ const Reviews = ({ getMovieData, movie, reviews, setReviews }) => {
                   <ReviewForm
                     handleSubmit={addReview}
                     revText={revText}
-                    labelText="Write a review?"
+                    labelText="Write a Review?"
                   />
                 </Col>
               </Row>

@@ -1,5 +1,4 @@
 import { Form, Button } from "react-bootstrap";
-import React from "react";
 
 const ReviewForm = ({ handleSubmit, revText, labelText, defaultValue }) => {
   return (
